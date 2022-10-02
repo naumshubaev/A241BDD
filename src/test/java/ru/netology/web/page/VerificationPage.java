@@ -14,6 +14,14 @@ public class VerificationPage {
         codeField.shouldBe(visible);
     }
 
+    public class Dash {
+        private SelenideElement heading = $("[data-test-id=dashboard]");
+
+        public Dash() {
+            heading.shouldBe(visible);
+        }
+    }
+
     public Dash validVerify(DataGenerator.VerificationCode verificationCode) {
         codeField.setValue(verificationCode.getCode());
         verifyButton.click();
