@@ -9,7 +9,6 @@ import ru.netology.web.page.TransactionPage;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class MoneyTransferTest {
     @Test
     void shouldTransferMoneyBetweenOwnCardsV1() {
@@ -34,9 +33,9 @@ public class MoneyTransferTest {
         int balanceCardTwoAfterAfterChargingCardTwo = cardSelectPage.getCardBalance(1);
 
         // сравниваем ожидаемое и фактическое значения баланса, я не привязываюсь к захардкоженной цифре "10000" - это значение может измениться в будущем
-       assertEquals(balanceCardOneBefore + (Integer.parseInt(DataGenerator.getCardInfo('2', "100").getTransferAmount())), (balanceCardOneAfter), "баланс карты 0001 должен был увеличиться на сумму транзакции");
-       assertEquals(balanceCardTwoBefore - (Integer.parseInt(DataGenerator.getCardInfo('2', "100").getTransferAmount())), (balanceCardTwoAfter), "баланс карты 0002 должен был уменьшиться на сумму транзакции");
-       assertEquals(balanceCardTwoAfter + (Integer.parseInt(DataGenerator.getCardInfo('1', "200").getTransferAmount())), (balanceCardTwoAfterAfterChargingCardTwo), "баланс карты 0002 должен был увеличиться на сумму транзакции");
-       assertEquals(balanceCardOneAfter - (Integer.parseInt(DataGenerator.getCardInfo('1', "200").getTransferAmount())), (balanceCardOneAfterChargingCardTwo), "баланс карты 0001 должен был увеличиться на сумму транзакции");
-        }
+        assertEquals(balanceCardOneBefore + (Integer.parseInt(DataGenerator.getCardInfo('2', "100").getTransferAmount())), (balanceCardOneAfter), "баланс карты 0001 должен был увеличиться на сумму транзакции");
+        assertEquals(balanceCardTwoBefore - (Integer.parseInt(DataGenerator.getCardInfo('2', "100").getTransferAmount())), (balanceCardTwoAfter), "баланс карты 0002 должен был уменьшиться на сумму транзакции");
+        assertEquals(balanceCardTwoAfter + (Integer.parseInt(DataGenerator.getCardInfo('1', "200").getTransferAmount())), (balanceCardTwoAfterAfterChargingCardTwo), "баланс карты 0002 должен был увеличиться на сумму транзакции");
+        assertEquals(balanceCardOneAfter - (Integer.parseInt(DataGenerator.getCardInfo('1', "200").getTransferAmount())), (balanceCardOneAfterChargingCardTwo), "баланс карты 0001 должен был увеличиться на сумму транзакции");
+    }
 }
