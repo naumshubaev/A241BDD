@@ -24,19 +24,19 @@ public class MoneyTransferTest {
         int balanceCardOneBefore = cardSelectPage.getCardBalance(0);
         int balanceCardTwoBefore = cardSelectPage.getCardBalance(1);
         cardSelectPage.clickButton(0);
-        TransactionPage.chargeCard(2);
+        TransactionPage.chargeCard('2', "100");
         int balanceCardOneAfter = cardSelectPage.getCardBalance(0);
         int balanceCardTwoAfter = cardSelectPage.getCardBalance(1);
         // пополняем карту 0002 с карты 0001
         cardSelectPage.clickButton(1);
-        TransactionPage.chargeCard(1);
+        TransactionPage.chargeCard('1', "200");
         int balanceCardOneAfterChargingCardTwo = cardSelectPage.getCardBalance(0);
         int balanceCardTwoAfterAfterChargingCardTwo = cardSelectPage.getCardBalance(1);
 
-        // проверяем разницу баланса, я не привязываюсь к захардкоженной цифре "10000" - это значение может измениться в будущем
-       assertEquals(balanceCardOneBefore + (Integer.parseInt(DataGenerator.getCardInfo(2).getTransferAmount())), (balanceCardOneAfter), "баланс карты 0001 должен был увеличиться на сумму транзакции");
-       assertEquals(balanceCardTwoBefore - (Integer.parseInt(DataGenerator.getCardInfo(2).getTransferAmount())), (balanceCardTwoAfter), "баланс карты 0002 должен был уменьшиться на сумму транзакции");
-       assertEquals(balanceCardTwoAfter + (Integer.parseInt(DataGenerator.getCardInfo(1).getTransferAmount())), (balanceCardTwoAfterAfterChargingCardTwo), "баланс карты 0002 должен был увеличиться на сумму транзакции");
-       assertEquals(balanceCardOneAfter - (Integer.parseInt(DataGenerator.getCardInfo(1).getTransferAmount())), (balanceCardOneAfterChargingCardTwo), "баланс карты 0001 должен был увеличиться на сумму транзакции");
+        // сравниваем ожидаемое и фактическое значения баланса, я не привязываюсь к захардкоженной цифре "10000" - это значение может измениться в будущем
+       assertEquals(balanceCardOneBefore + (Integer.parseInt(DataGenerator.getCardInfo('2', "100").getTransferAmount())), (balanceCardOneAfter), "баланс карты 0001 должен был увеличиться на сумму транзакции");
+       assertEquals(balanceCardTwoBefore - (Integer.parseInt(DataGenerator.getCardInfo('2', "100").getTransferAmount())), (balanceCardTwoAfter), "баланс карты 0002 должен был уменьшиться на сумму транзакции");
+       assertEquals(balanceCardTwoAfter + (Integer.parseInt(DataGenerator.getCardInfo('1', "200").getTransferAmount())), (balanceCardTwoAfterAfterChargingCardTwo), "баланс карты 0002 должен был увеличиться на сумму транзакции");
+       assertEquals(balanceCardOneAfter - (Integer.parseInt(DataGenerator.getCardInfo('1', "200").getTransferAmount())), (balanceCardOneAfterChargingCardTwo), "баланс карты 0001 должен был увеличиться на сумму транзакции");
         }
 }

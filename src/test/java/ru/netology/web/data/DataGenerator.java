@@ -30,9 +30,9 @@ public class DataGenerator {
         private String cardNumber;
         private String transferAmount;
     }
-
-    public static CardInfo getCardInfo(int cardNumber) {
-        return new CardInfo("5559_0000_0000_000" + cardNumber, "100");
+// максимально допустимое количество тестовых карт пусть и не велико, но пока достаточно, имхо
+    public static CardInfo getCardInfo(char cardNumberEnding, String transferAmount) {
+        return new CardInfo("5559_0000_0000_000" + cardNumberEnding, transferAmount);
     }
 }
 
