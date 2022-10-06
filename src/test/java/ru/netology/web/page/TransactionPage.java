@@ -7,7 +7,7 @@ import static ru.netology.web.data.DataGenerator.getCardInfo;
 
 public class TransactionPage {
 
-    public static void chargeCard(char cardNumberEnding, String transferAmount) {
+    public void chargeCard(char cardNumberEnding, String transferAmount) {
         $("[data-test-id=\"from\"] input").sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
         $("[data-test-id=\"from\"] input").setValue(getCardInfo(cardNumberEnding, transferAmount).getCardNumber());
         $("[data-test-id=\"amount\"] input").sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
